@@ -948,34 +948,12 @@ body.popup-show::after {
     margin-bottom: 3.1875rem;
   }
 }
-@media (min-width: 70em) {
-  .page__effective {
-    margin-bottom: 6.875rem;
-  }
+.page__effective {
+  margin: 0px 0px 90px 0px;
 }
-@media (min-width: 20em) and (max-width: 70em) {
+@media (max-width: 47.99875em) {
   .page__effective {
-    margin-bottom: clamp( 3.1875rem , 1.7125rem  +  7.375vw , 6.875rem );
-  }
-}
-@media (max-width: 20em) {
-  .page__effective {
-    margin-bottom: 3.1875rem;
-  }
-}
-@media (max-width: 47.99875em) and (min-width: 70em) {
-  .page__effective {
-    margin-bottom: 0rem;
-  }
-}
-@media (max-width: 47.99875em) and (min-width: 20em) and (max-width: 70em) {
-  .page__effective {
-    margin-bottom: clamp( 0rem , 0rem  +  0vw , 0rem );
-  }
-}
-@media (max-width: 47.99875em) and (max-width: 20em) {
-  .page__effective {
-    margin-bottom: 0rem;
+    margin: 0px 0px 0px 0px;
   }
 }
 @media (min-width: 70em) {
