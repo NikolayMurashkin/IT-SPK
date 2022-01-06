@@ -74,6 +74,9 @@ h6 {
   font-size: inherit;
 }
 
+body {
+  overflow: auto;
+}
 .lock body {
   overflow: hidden;
   touch-action: none;
@@ -960,9 +963,19 @@ body.popup-show::after {
     margin-bottom: 3.1875rem;
   }
 }
-@media (max-width: 47.99875em) {
+@media (max-width: 47.99875em) and (min-width: 70em) {
   .page__effective {
-    margin-bottom: 0;
+    margin-bottom: 0rem;
+  }
+}
+@media (max-width: 47.99875em) and (min-width: 20em) and (max-width: 70em) {
+  .page__effective {
+    margin-bottom: clamp( 0rem , 0rem  +  0vw , 0rem );
+  }
+}
+@media (max-width: 47.99875em) and (max-width: 20em) {
+  .page__effective {
+    margin-bottom: 0rem;
   }
 }
 @media (min-width: 70em) {
@@ -1378,7 +1391,7 @@ body.popup-show::after {
 }
 @media (max-width: 47.99875em) {
   .effective__top {
-    margin: 0px 0px 51px 0px;
+    margin: 0px 0px 0px 0px;
   }
 }
 .effective .purpose-effective {
