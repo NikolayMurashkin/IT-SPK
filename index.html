@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220104221530">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220106145612">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,15 +25,15 @@
 				<div class="header__menu menu">
 					<button type="button" class="menu__icon icon-menu"><span></span></button>
 					<nav class="menu__body">
-						<button href="#" data-popup class="menu__btn button">Отправить заявку</button>
+						<button data-popup="#popup" class="menu__btn button">Отправить заявку</button>
 						<ul class="menu__list">
 							<li class="menu__item"><a href="" class="menu__link">О нас</a></li>
 							<li class="menu__item"><a href="" class="menu__link">Услуги</a></li>
 							<li class="menu__item"><a href="" class="menu__link">Цены</a></li>
-							<div class="menu__language">
+							<li class="menu__language">
 								<a href="#">ua</a>
 								<a href="#">ru</a>
-							</div>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -51,16 +51,13 @@
 		</header>
 		<main class="page">
 			<section class="page__hero hero">
-				<div class="hero__bg-ibg">
-					<img src="img/hero/main_bg.jpg" alt="">
-				</div>
 				<div class="hero__container">
 					<div class="hero__body">
 						<h1 class="hero__title">IT-Аутсорсинг компаниям в Киеве</h1>
 						<h3 class="hero__subtitle">Обслуживание компьютеров в Киеве</h3>
 						<p class="hero__cta">От <span>315грн</span>/мес
 							за 1 рабочее место</p>
-						<button data-popup class="hero__btn button">Отправить заявку</button>
+						<button data-popup="#popup" class="hero__btn button">Отправить заявку</button>
 						<p class="hero__text-right">Мы знаем как сложно найти хорошую компанию по обслуживанию компьютеров в Киеве. Исправим это!</p>
 					</div>
 				</div>
@@ -111,7 +108,7 @@
 							<p class="effective__text">За время работы мы подобрали оптимальные решения по соотношению цена-качество для организации офисной IT-инфраструктуры. Огромный опыт обслуживания объектов в Киеве от офиса на несколько рабочих мест до офисно-производственных комплексов на тысячи квадартных метров и более полутора сотен подключенных абонентов.</p>
 							<p class="effective__text">Абонентское обслуживание компьютеров в Киеве уже сейчас не оставляет шансов на выживание обычным сисадминам в штате компании, прежний подход дороже и неэффективный. С первого дня работы с нами вы получаете доступ ко всем нашим знаниям, опыту и ресурсам. </p>
 						</div>
-						<button class="effective__btn button">Отправить заявку</button>
+						<button data-popup="#popup" class="effective__btn button">Отправить заявку</button>
 					</div>
 					<div class="effective__purpose purpose-effective">
 						<div class="purpose-effective__left">
@@ -139,8 +136,8 @@
 						<p class="price__text">У нас нет зарплаты или фиксированной суммы в месяц, все рассчеты базируются только на количестве компьютеров, которые мы берем на обслуживание и подключенных услугах. Платите только за что чем пользуетесь - <span>максимальная экономия и эффективность.</span></p>
 						<p class="price__text">Оставьте заявку на обслуживание компьютеров и мы подготовим предложение специально для вас</p>
 						<div data-da=".price__cards, 1090, 2" class="price__buttons">
-							<button class="price__button">Прайс it</button>
-							<button class="price__button">Прайс монтаж</button>
+							<button data-popup="#popup-form" class="price__button">Прайс it</button>
+							<button data-popup="#popup-form" class="price__button">Прайс монтаж</button>
 						</div>
 					</div>
 					<div class="price__cards">
@@ -216,18 +213,18 @@
 			<section class="page__application application">
 				<div class="application__container">
 					<h2 class="application__text">Оставьте заявку на обслуживание компьютеров и мы свяжемся с вами</h2>
-					<form action="" class="application__form">
+					<form class="application__form">
 						<input type="text" name="Name" placeholder="Имя">
 						<input type="tel" name="phone" placeholder="Номер Телефона*">
 						<input type="email" name="email" placeholder="E-mail">
-						<textarea type="text" name="message" placeholder="Сообщение"></textarea>
+						<textarea name="message" placeholder="Сообщение"></textarea>
 						<div class="application__agree">
 							<input class="application__checkbox" type="checkbox" name="checkbox-agree" required id="agree" checked>
 							<label for="agree" class="application__label">
 								Даю согласие на обработку персональных данных
 							</label>
 						</div>
-						<button type="submit" class="application__button button">Отправить</button>
+						<button type="submit" class="application__button">Отправить</button>
 					</form>
 				</div>
 			</section>
@@ -254,20 +251,47 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?_v=20220104221530"></script>
-	<!-- 
-<div id="popup" aria-hidden="true" class="popup">
-	<div class="popup__wrapper">
-		<div class="popup__content">
-			<button data-close type="button" class="popup__close">Закрыть</button>
-			<div class="popup__text">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?_v=20220106145612"></script>
+
+	<div id="popup" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close"><img src="img/icons/close_popup.svg" alt=""></button>
+				<form class="popup__form">
+					<input type="text" name="Name" placeholder="Имя">
+					<input type="tel" name="phone" placeholder="Номер Телефона*">
+					<input type="email" name="email" placeholder="E-mail">
+					<textarea name="message" placeholder="Сообщение"></textarea>
+					<div class="popup__agree">
+						<input class="popup__checkbox" type="checkbox" name="checkbox-agree" required id="popup__agree" checked>
+						<label for="popup__agree" class="popup__label">
+							Даю согласие на обработку персональных данных
+						</label>
+					</div>
+					<button data-popup="#popup-succes" type="submit" class="popup__button">Отправить</button>
+				</form>
 			</div>
 		</div>
 	</div>
-</div>
- -->
-
-	<script src="js/app.min.js?_v=20220104221530"></script>
+	<div id="popup-succes" aria-hidden="true" class="popup-succes">
+		<div class="popup-succes__wrapper">
+			<div class="popup-succes__content">
+				<button data-close type="button" class="popup-succes__close"><img src="img/icons/close_popup.svg" alt=""></button>
+				<div class="popup-succes__img"><img src="img/icons/popup_succes.svg" alt=""></div>
+				<p class="popup-succes__text">Запрос успешно отправлен, мы свяжемся с вами в ближайшее время</p>
+			</div>
+		</div>
+	</div>
+	<div id="popup-form" aria-hidden="true" class="popup-form">
+		<div class="popup-form__wrapper">
+			<div class="popup-form__content">
+				<button data-close type="button" class="popup-form__close"><img src="img/icons/close_popup.svg" alt=""></button>
+				<div class="popup-form__img"><img src="img/icons/popup_succes.svg" alt=""></div>
+				<p class="popup-form__text">тут открывается pdf на гуглдоке</p>
+			</div>
+		</div>
+	</div>
+	<script src="js/app.min.js?_v=20220106145612"></script>
 </body>
 
 </html>
