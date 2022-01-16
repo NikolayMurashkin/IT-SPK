@@ -769,7 +769,8 @@ body.popup-show::after {
 }
 
 .scrolled {
-  background-color: #06182f;
+  background-color: rgba(6, 24, 47, 0.7);
+  backdrop-filter: blur(10px);
   padding-bottom: 20px;
   padding-top: 20px;
 }

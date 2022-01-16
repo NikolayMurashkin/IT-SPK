@@ -10,15 +10,15 @@
       (this.nodes = document.querySelectorAll("[data-da]"));
     for (let t = 0; t < this.nodes.length; t++) {
       const e = this.nodes[t],
-        s = e.dataset.da.trim().split(","),
-        o = {};
-      (o.element = e),
-        (o.parent = e.parentNode),
-        (o.destination = document.querySelector(s[0].trim())),
-        (o.breakpoint = s[1] ? s[1].trim() : "767"),
-        (o.place = s[2] ? s[2].trim() : "last"),
-        (o.index = this.indexInParent(o.parent, o.element)),
-        this.оbjects.push(o);
+        o = e.dataset.da.trim().split(","),
+        s = {};
+      (s.element = e),
+        (s.parent = e.parentNode),
+        (s.destination = document.querySelector(o[0].trim())),
+        (s.breakpoint = o[1] ? o[1].trim() : "767"),
+        (s.place = o[2] ? o[2].trim() : "last"),
+        (s.index = this.indexInParent(s.parent, s.element)),
+        this.оbjects.push(s);
     }
     this.arraySort(this.оbjects),
       (this.mediaQueries = Array.prototype.map.call(
@@ -32,15 +32,15 @@
       )),
       (this.mediaQueries = Array.prototype.filter.call(
         this.mediaQueries,
-        function (t, e, s) {
-          return Array.prototype.indexOf.call(s, t) === e;
+        function (t, e, o) {
+          return Array.prototype.indexOf.call(o, t) === e;
         }
       ));
     for (let e = 0; e < this.mediaQueries.length; e++) {
-      const s = this.mediaQueries[e],
-        o = String.prototype.split.call(s, ","),
-        i = window.matchMedia(o[0]),
-        n = o[1],
+      const o = this.mediaQueries[e],
+        s = String.prototype.split.call(o, ","),
+        i = window.matchMedia(s[0]),
+        n = s[1],
         a = Array.prototype.filter.call(this.оbjects, function (t) {
           return t.breakpoint === n;
         });
@@ -53,34 +53,34 @@
     (t.prototype.mediaHandler = function (t, e) {
       if (t.matches)
         for (let t = 0; t < e.length; t++) {
-          const s = e[t];
-          (s.index = this.indexInParent(s.parent, s.element)),
-            this.moveTo(s.place, s.element, s.destination);
+          const o = e[t];
+          (o.index = this.indexInParent(o.parent, o.element)),
+            this.moveTo(o.place, o.element, o.destination);
         }
       else
         for (let t = e.length - 1; t >= 0; t--) {
-          const s = e[t];
-          s.element.classList.contains(this.daClassname) &&
-            this.moveBack(s.parent, s.element, s.index);
+          const o = e[t];
+          o.element.classList.contains(this.daClassname) &&
+            this.moveBack(o.parent, o.element, o.index);
         }
     }),
-    (t.prototype.moveTo = function (t, e, s) {
+    (t.prototype.moveTo = function (t, e, o) {
       e.classList.add(this.daClassname),
-        "last" === t || t >= s.children.length
-          ? s.insertAdjacentElement("beforeend", e)
+        "last" === t || t >= o.children.length
+          ? o.insertAdjacentElement("beforeend", e)
           : "first" !== t
-          ? s.children[t].insertAdjacentElement("beforebegin", e)
-          : s.insertAdjacentElement("afterbegin", e);
+          ? o.children[t].insertAdjacentElement("beforebegin", e)
+          : o.insertAdjacentElement("afterbegin", e);
     }),
-    (t.prototype.moveBack = function (t, e, s) {
+    (t.prototype.moveBack = function (t, e, o) {
       e.classList.remove(this.daClassname),
-        void 0 !== t.children[s]
-          ? t.children[s].insertAdjacentElement("beforebegin", e)
+        void 0 !== t.children[o]
+          ? t.children[o].insertAdjacentElement("beforebegin", e)
           : t.insertAdjacentElement("beforeend", e);
     }),
     (t.prototype.indexInParent = function (t, e) {
-      const s = Array.prototype.slice.call(t.children);
-      return Array.prototype.indexOf.call(s, e);
+      const o = Array.prototype.slice.call(t.children);
+      return Array.prototype.indexOf.call(o, e);
     }),
     (t.prototype.arraySort = function (t) {
       "min" === this.type
@@ -263,8 +263,8 @@
             )}?rel=0&showinfo=0&autoplay=1`,
             e = document.createElement("iframe");
           e.setAttribute("allowfullscreen", "");
-          const s = this.options.setAutoplayYoutube ? "autoplay;" : "";
-          e.setAttribute("allow", `${s}; encrypted-media`),
+          const o = this.options.setAutoplayYoutube ? "autoplay;" : "";
+          e.setAttribute("allow", `${o}; encrypted-media`),
             e.setAttribute("src", t),
             this.targetOpen.element.querySelector(
               `[${this.options.youtubePlaceAttribute}]`
@@ -280,7 +280,7 @@
             this.options.classes.popupActive
           ),
           document.body.classList.add(this.options.classes.bodyActive),
-          this._reopen ? (this._reopen = !1) : o(),
+          this._reopen ? (this._reopen = !1) : s(),
           this.targetOpen.element.setAttribute("aria-hidden", "false"),
           (this.previousOpen.selector = this.targetOpen.selector),
           (this.previousOpen.element = this.targetOpen.element),
@@ -304,7 +304,7 @@
         "" !== t.trim() &&
         (this.previousOpen.selector = t),
         this.isOpen &&
-          s &&
+          o &&
           (this.options.on.beforeClose(this),
           this.targetOpen.element.hasAttribute(this.options.youtubeAttribute) &&
             this.targetOpen.element.querySelector(
@@ -319,7 +319,7 @@
           this.previousOpen.element.setAttribute("aria-hidden", "true"),
           this._reopen ||
             (document.body.classList.remove(this.options.classes.bodyActive),
-            o(),
+            s(),
             (this.isOpen = !1)),
           this._removeHash(),
           this._selectorOpen &&
@@ -357,10 +357,10 @@
     }
     _focusCatch(t) {
       const e = this.targetOpen.element.querySelectorAll(this._focusEl),
-        s = Array.prototype.slice.call(e),
-        o = s.indexOf(document.activeElement);
-      t.shiftKey && 0 === o && (s[s.length - 1].focus(), t.preventDefault()),
-        t.shiftKey || o !== s.length - 1 || (s[0].focus(), t.preventDefault());
+        o = Array.prototype.slice.call(e),
+        s = o.indexOf(document.activeElement);
+      t.shiftKey && 0 === s && (o[o.length - 1].focus(), t.preventDefault()),
+        t.shiftKey || s !== o.length - 1 || (o[0].focus(), t.preventDefault());
     }
     _focusTrap() {
       const t = this.previousOpen.element.querySelectorAll(this._focusEl);
@@ -369,41 +369,36 @@
         : t[0].focus();
     }
     popupLogging(t) {
-      this.options.logging &&
-        (function (t) {
-          setTimeout(() => {
-            window.FLS && console.log(t);
-          }, 0);
-        })(`[Попапос]: ${t}`);
+      this.options.logging && a(`[Попапос]: ${t}`);
     }
   }
-  let s = !0,
-    o = (t = 500) => {
+  let o = !0,
+    s = (t = 500) => {
       document.documentElement.classList.contains("lock") ? i(t) : n(t);
     },
     i = (t = 500) => {
       let e = document.querySelector("body");
-      if (s) {
-        let o = document.querySelectorAll("[data-lp]");
+      if (o) {
+        let s = document.querySelectorAll("[data-lp]");
         setTimeout(() => {
-          for (let t = 0; t < o.length; t++) {
-            o[t].style.paddingRight = "0px";
+          for (let t = 0; t < s.length; t++) {
+            s[t].style.paddingRight = "0px";
           }
           (e.style.paddingRight = "0px"),
             document.documentElement.classList.remove("lock");
         }, t),
-          (s = !1),
+          (o = !1),
           setTimeout(function () {
-            s = !0;
+            o = !0;
           }, t);
       }
     },
     n = (t = 500) => {
       let e = document.querySelector("body");
-      if (s) {
-        let o = document.querySelectorAll("[data-lp]");
-        for (let t = 0; t < o.length; t++) {
-          o[t].style.paddingRight =
+      if (o) {
+        let s = document.querySelectorAll("[data-lp]");
+        for (let t = 0; t < s.length; t++) {
+          s[t].style.paddingRight =
             window.innerWidth -
             document.querySelector(".wrapper").offsetWidth +
             "px";
@@ -413,15 +408,162 @@
           document.querySelector(".wrapper").offsetWidth +
           "px"),
           document.documentElement.classList.add("lock"),
-          (s = !1),
+          (o = !1),
           setTimeout(function () {
-            s = !0;
+            o = !0;
           }, t);
       }
     };
-  let a = !1;
+  function a(t) {
+    setTimeout(() => {
+      window.FLS && console.log(t);
+    }, 0);
+  }
+  function r(t) {
+    return t.filter(function (t, e, o) {
+      return o.indexOf(t) === e;
+    });
+  }
+  let l = (t, e = !1, o = 500, s = 0) => {
+    const n = document.querySelector(t);
+    if (n) {
+      let r = "",
+        l = 0;
+      e &&
+        ((r = "header.header"), (l = document.querySelector(r).offsetHeight));
+      let c = {
+        speedAsDuration: !0,
+        speed: o,
+        header: r,
+        offset: s,
+        easing: "easeOutQuad",
+      };
+      if (
+        (document.documentElement.classList.contains("menu-open") &&
+          (i(), document.documentElement.classList.remove("menu-open")),
+        "undefined" != typeof SmoothScroll)
+      )
+        new SmoothScroll().animateScroll(n, "", c);
+      else {
+        let t = n.getBoundingClientRect().top + scrollY;
+        window.scrollTo({ top: l ? t - l : t, behavior: "smooth" });
+      }
+      a(`[gotoBlock]: Юхуу...едем к ${t}`);
+    } else a(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${t}`);
+  };
+  class c {
+    constructor(t) {
+      (this.config = Object.assign({ logging: !0 }, t)),
+        this.observer,
+        !document.documentElement.classList.contains("watcher") &&
+          this.scrollWatcherRun();
+    }
+    scrollWatcherUpdate() {
+      this.scrollWatcherRun();
+    }
+    scrollWatcherRun() {
+      document.documentElement.classList.add("watcher"),
+        this.scrollWatcherConstructor(
+          document.querySelectorAll("[data-watch]")
+        );
+    }
+    scrollWatcherConstructor(t) {
+      if (t.length) {
+        this.scrollWatcherLogging(
+          `Проснулся, слежу за объектами (${t.length})...`
+        ),
+          r(
+            Array.from(t).map(function (t) {
+              return `${
+                t.dataset.watchRoot ? t.dataset.watchRoot : null
+              }|${t.dataset.watchMargin ? t.dataset.watchMargin : "0px"}|${t.dataset.watchThreshold ? t.dataset.watchThreshold : 0}`;
+            })
+          ).forEach((e) => {
+            let o = e.split("|"),
+              s = { root: o[0], margin: o[1], threshold: o[2] },
+              i = Array.from(t).filter(function (t) {
+                let e = t.dataset.watchRoot ? t.dataset.watchRoot : null,
+                  o = t.dataset.watchMargin ? t.dataset.watchMargin : "0px",
+                  i = t.dataset.watchThreshold ? t.dataset.watchThreshold : 0;
+                if (
+                  String(e) === s.root &&
+                  String(o) === s.margin &&
+                  String(i) === s.threshold
+                )
+                  return t;
+              }),
+              n = this.getScrollWatcherConfig(s);
+            this.scrollWatcherInit(i, n);
+          });
+      } else
+        this.scrollWatcherLogging("Сплю, нет объектов для слежения. ZzzZZzz");
+    }
+    getScrollWatcherConfig(t) {
+      let e = {};
+      if (
+        (document.querySelector(t.root)
+          ? (e.root = document.querySelector(t.root))
+          : "null" !== t.root &&
+            this.scrollWatcherLogging(
+              `Эмм... родительского объекта ${t.root} нет на странице`
+            ),
+        (e.rootMargin = t.margin),
+        !(t.margin.indexOf("px") < 0 && t.margin.indexOf("%") < 0))
+      ) {
+        if ("prx" === t.threshold) {
+          t.threshold = [];
+          for (let e = 0; e <= 1; e += 0.005) t.threshold.push(e);
+        } else t.threshold = t.threshold.split(",");
+        return (e.threshold = t.threshold), e;
+      }
+      this.scrollWatcherLogging(
+        "Ой ой, настройку data-watch-margin нужно задавать в PX или %"
+      );
+    }
+    scrollWatcherCreate(t) {
+      this.observer = new IntersectionObserver((t, e) => {
+        t.forEach((t) => {
+          this.scrollWatcherCallback(t, e);
+        });
+      }, t);
+    }
+    scrollWatcherInit(t, e) {
+      this.scrollWatcherCreate(e), t.forEach((t) => this.observer.observe(t));
+    }
+    scrollWatcherIntersecting(t, e) {
+      t.isIntersecting
+        ? (!e.classList.contains("_watcher-view") &&
+            e.classList.add("_watcher-view"),
+          this.scrollWatcherLogging(
+            `Я вижу ${e.classList}, добавил класс _watcher-view`
+          ))
+        : (e.classList.contains("_watcher-view") &&
+            e.classList.remove("_watcher-view"),
+          this.scrollWatcherLogging(
+            `Я не вижу ${e.classList}, убрал класс _watcher-view`
+          ));
+    }
+    scrollWatcherOff(t, e) {
+      e.unobserve(t),
+        this.scrollWatcherLogging(`Я перестал следить за ${t.classList}`);
+    }
+    scrollWatcherLogging(t) {
+      this.config.logging && a(`[Наблюдатель]: ${t}`);
+    }
+    scrollWatcherCallback(t, e) {
+      const o = t.target;
+      this.scrollWatcherIntersecting(t, o),
+        o.hasAttribute("data-watch-once") &&
+          t.isIntersecting &&
+          this.scrollWatcherOff(o, e),
+        document.dispatchEvent(
+          new CustomEvent("watcherCallback", { detail: { entry: t } })
+        );
+    }
+  }
+  let h = !1;
   setTimeout(() => {
-    if (a) {
+    if (h) {
       let t = new Event("windowScroll");
       window.addEventListener("scroll", function (e) {
         document.dispatchEvent(t);
@@ -452,8 +594,120 @@
       let t = document.querySelector(".icon-menu");
       t &&
         t.addEventListener("click", function (t) {
-          s && (o(), document.documentElement.classList.toggle("menu-open"));
+          o && (s(), document.documentElement.classList.toggle("menu-open"));
         });
     })(),
-    new e({});
+    new e({}),
+    new c({}),
+    (function () {
+      function t(t) {
+        if ("click" === t.type) {
+          const e = t.target;
+          if (e.closest("[data-goto]")) {
+            const o = e.closest("[data-goto]"),
+              s = o.dataset.goto ? o.dataset.goto : "",
+              i = !!o.hasAttribute("data-goto-header"),
+              n = o.dataset.gotoSpeed ? o.dataset.gotoSpeed : "500";
+            l(s, i, n), t.preventDefault();
+          }
+        } else if ("watcherCallback" === t.type && t.detail) {
+          const e = t.detail.entry,
+            o = e.target;
+          if ("navigator" === o.dataset.watch) {
+            const t = o.id,
+              s =
+                (document.querySelector("[data-goto]._navigator-active"),
+                document.querySelector(`[data-goto="${t}"]`));
+            e.isIntersecting
+              ? s && s.classList.add("_navigator-active")
+              : s && s.classList.remove("_navigator-active");
+          }
+        }
+      }
+      document.addEventListener("click", t),
+        document.addEventListener("watcherCallback", t);
+    })(),
+    (function () {
+      h = !0;
+      const t = document.querySelector("header.header"),
+        e = t.hasAttribute("data-scroll-show"),
+        o = t.dataset.scrollShow ? t.dataset.scrollShow : 500,
+        s = t.dataset.scroll ? t.dataset.scroll : 1;
+      let i,
+        n = 0;
+      document.addEventListener("windowScroll", function (a) {
+        const r = window.scrollY;
+        clearTimeout(i),
+          r >= s
+            ? (!t.classList.contains("_header-scroll") &&
+                t.classList.add("_header-scroll"),
+              e &&
+                (r > n
+                  ? t.classList.contains("_header-show") &&
+                    t.classList.remove("_header-show")
+                  : !t.classList.contains("_header-show") &&
+                    t.classList.add("_header-show"),
+                (i = setTimeout(() => {
+                  !t.classList.contains("_header-show") &&
+                    t.classList.add("_header-show");
+                }, o))))
+            : (t.classList.contains("_header-scroll") &&
+                t.classList.remove("_header-scroll"),
+              e &&
+                t.classList.contains("_header-show") &&
+                t.classList.remove("_header-show")),
+          (n = r <= 0 ? 0 : r);
+      });
+    })(),
+    (h = !0),
+    (function () {
+      const t = document.querySelectorAll("[data-sticky]");
+      t.length &&
+        t.forEach((t) => {
+          let e = {
+            top: t.dataset.stickyTop ? parseInt(t.dataset.stickyTop) : 0,
+            bottom: t.dataset.stickyBottom
+              ? parseInt(t.dataset.stickyBottom)
+              : 0,
+            header: t.hasAttribute("data-sticky-header")
+              ? document.querySelector("header.header").offsetHeight
+              : 0,
+          };
+          !(function (t, e) {
+            const o = t.querySelector("[data-sticky-item]"),
+              s = e.header + e.top,
+              i = o.getBoundingClientRect().top + scrollY - s;
+            document.addEventListener("windowScroll", function (n) {
+              const a =
+                t.offsetHeight +
+                t.getBoundingClientRect().top +
+                scrollY -
+                (s + o.offsetHeight + e.bottom);
+              let r = {
+                position: "relative",
+                bottom: "auto",
+                top: "0px",
+                left: "0px",
+                width: "auto",
+              };
+              s + e.bottom + o.offsetHeight < window.innerHeight &&
+                (scrollY >= i && scrollY <= a
+                  ? ((r.position = "fixed"),
+                    (r.bottom = "auto"),
+                    (r.top = `${s}px`),
+                    (r.left = `${o.getBoundingClientRect().left}px`),
+                    (r.width = `${o.offsetWidth}px`))
+                  : scrollY >= a &&
+                    ((r.position = "absolute"),
+                    (r.bottom = `${e.bottom}px`),
+                    (r.top = "auto"),
+                    (r.left = "0px"),
+                    (r.width = `${o.offsetWidth}px`))),
+                (function (t, e) {
+                  t.style.cssText = `position:${e.position};bottom:${e.bottom};top:${e.top};left:${e.left};width:${e.width};`;
+                })(o, r);
+            });
+          })(t, e);
+        });
+    })();
 })();
